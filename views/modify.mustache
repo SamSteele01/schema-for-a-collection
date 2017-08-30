@@ -19,75 +19,68 @@
 
     <form class="" action="/{{_id}}/update/" method="post">
        <p>
-         <label for="name">Name</label>
-         <h3>{{name}}</h3>
-         <input type="text" id="name" name="name" value="" required>
+         <label for="gameName">Name</label>
+         <input type="text" id="gameName" name="gameName" value="{{gameName}}" required>
        </p>
        <p>
          <label for="release_date">Release date</label>
-          <h3>{{release_date}}</h3>
-         <input type="text" id="release_date" name="release_date" value="" >
+         <input type="text" id="release_date" name="release_date" value="{{release_date}}" >
        </p>
        <p>
          <label for="genre">Genre</label>
-         <h3>{{genre}}</h3>
-         <input type="text" id="genre" name="genre" value="" >
+         <input type="text" id="genre" name="genre" value="{{genre}}" >
        </p>
        <p>
          <label for="publisher">Publisher</label>
-         <h3>{{publisher}}</h3>
-         <input type="text" id="publisher" name="publisher" value="" >
+         <input type="text" id="publisher" name="publisher" value="{{publisher}}" >
        </p>
        <p>
          <label for="IGNrating">IGNrating</label>
-         <h3>{{IGNrating}}</h3>
-         <input type="text" id="IGNrating" name="IGNrating" value="" >
+         <input type="text" id="IGNrating" name="IGNrating" value="{{IGNrating}}" >
        </p>
        <p>
          <label for="ESRBrating">ESRBrating</label>
-         <h3>{{ESRBrating}}</h3>
-         <input type="text" id="ESRBrating" name="ESRBrating" value="" >
+         <input type="text" id="ESRBrating" name="ESRBrating" value="{{ESRBrating}}" >
        </p>
        <p>
          <label for="platforms">Platforms</label>
-         <h3>{{platforms}}</h3>
-         <input type="text" id="platforms" name="platforms" value="" >
+         <input type="text" id="platforms" name="platforms" value="{{platforms}}" >
        </p>
+       <button type="button" name="button">Add Platform</button>
        <p>
          <label for="price">Price</label>
-         <h3>{{price}}</h3>
-         <input type="number" id="price" name="price" value="" >
+         <input type="number" id="price" name="price" value="{{price}}" >
        </p>
        <p>
          <label for="minPlayers">Minium Players</label>
-         <h3>{{min}}</h3>
-         <input type="number" id="minPlayers" name="minPlayers" value="" >
+         <input type="number" id="minPlayers" name="players.min" value="{{min}}" >
        </p>
        <p>
          <label for="maxPlayers">Maxium Players</label>
-         <h3>{{max}}</h3>
-         <input type="number" id="maxPlayers" name="maxPlayers" value="" >
+         <input type="number" id="maxPlayers" name="players.max" value="{{max}}" >
        </p>
        <p>
          <label for="multiPlayer">Multi Player?</label>
-         <h3>{{multiPlayer}}</h3>
-         <input type="checkbox" id="multiPlayer" name="multiPlayer" value="true" >
+         <input type="checkbox" placeholder="{{multiPlayer}}" id="multiPlayer" name="multiPlayer" value="" {{#multiPlayer}}checked{{/multiPlayer}} >
        </p>
 
-       <p>
+       <!-- <p>
          <label for="characters">Characters</label>
          <h3>{{characters}}</h3>
          <input type="text" id="characters" name="characters" value="" >
-       </p>
+       </p> -->
+
        <p>
          <button type="submit">Update Game Info</button>
        </p>
      </form>
      <form class="" action="/{{_id}}/delete/" method="post">
        <p>
+         <!-- want an alert window -->
          <label for="delete">Delete</label>
          <input type="image" id="image" name="image" value="" >
          <button type="submit" name="image">Delete Game from Database</button>
        </p>
     </form>
+    <a href="/{{_id}}" class="button button-success">Back</a>
   {{/videogame}}

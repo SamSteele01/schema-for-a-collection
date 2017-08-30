@@ -26,14 +26,15 @@ app.use('/static', express.static('static'));
 //routing begin!
 
 app.get('/', function (req, res) {
-  Videogame.find().then(function (Videogame) {
-    res.render('index', {Videogame: Videogame});
+  Videogame.find().then(function (videogame) {
+    res.render('index', {videogame: videogame});
   })
 })
 app.get('/new', function(req, res){
   res.render('new');
 })
 app.post('/new', function(req, res){
+  // error handeling
  Videogame.create(req.body).then(function(){
    res.redirect('/');
  })
@@ -47,16 +48,16 @@ app.get('/:id/', function(req, res){
 })
 
 
-app.get('/{{_id}}/addCharacters', function(req, res){
+app.get('/:id/addCharacters/', function(req, res){
   Videogame.findOne({_id: req.params.id}).then(function(videogame){
     res.render('addCharacters', {videogame: videogame})
   })
 })
 app.post('/:id/updateCharacters/', function(req, res){
   Videogame.findOne({_id: req.params.id}).then(function(videogame){
-  Videogame.characters.push(req.body);
-   Videogame.save().then(function () {
-     res.render('videogame', {videogame: videogame})
+    videogame.characters.push(req.body);
+    videogame.save().then(function(){
+      res.render('addCharacters', {videogame: videogame})
     })
   })
 })
@@ -69,11 +70,9 @@ app.get('/:id/modify/', function(req, res){
 })
 app.post('/:id/update/', function(req, res){
   // need update method
-  Videogame.findOne({_id: req.params.id}).then(function(videogame){
-    Videogame.push(req.body);
-     Videogame.save().then(function () {
+  Videogame.findOneAndUpdate({_id: req.params.id}, req.body).then(function(videogame){
        res.render('videogame', {videogame: videogame})
-    })
+
   })
 })
 app.post('/:id/image/', function(req, res){
@@ -87,7 +86,10 @@ app.post('/:id/image/', function(req, res){
 
 app.post('/:id/delete', function(req, res){
    Videogame.findOne({_id: req.params.id}).then(function(videogame){
-     res.render('', {videogame: videogame})
+     videogame.remove().then(function(){
+
+       res.redirect('/')
+     })
    })
  })
 

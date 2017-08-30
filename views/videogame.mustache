@@ -1,8 +1,8 @@
 
-     {{#videogame}}
+    {{#videogame}}
       <div class="games">
 
-        <h2>{{name}}</h2>
+        <h2>{{gameName}}</h2>
         <h3>{{release_date}}</h3>
         <h3>{{genre}}</h3>
         <h3>{{publisher}}</h3>
@@ -20,23 +20,29 @@
         <h3>${{price}}</h3>
 
         {{#players}}
-          <h3>{{min}} - {{max}} players</h3>
-          <h3>{{multiPlayer}}</h3>
+          {{#min}}
+
+            <h5>{{min}} {{#max}}- {{max}}{{/max}} players</h5>
+
+          {{/min}}
         {{/players}}
 
-        <a href="/{{_id}}/addCharacters" class="button button-danger" >Add Characters</a>
+        <a href="/{{_id}}/addCharacters/" class="button button-danger" >Add Characters</a>
 
         <ol>
           {{#characters}}
             <li>
-              <h3>{{name}}{{npc}}{{enemy}}</h3>
+              {{chName}}
+              {{#npc}}Non playable{{/npc}}
+              {{^npc}}Playable{{/npc}}
+              {{#enemy}}Enemy{{/enemy}}
             </li>
           {{/characters}}
         </ol>
 
+        <a href="/{{_id}}/modify/" class="button button-info">Edit this Videogame</a>
       </div>
-     {{/videogame}}
 
-     <p>
-       <a href="/{{_id}}/modify/" class="button button-info">Edit this Videogame</a>
-     </p>
+  {{/videogame}}
+
+  <a href="/" class="button button-success">Back</a>

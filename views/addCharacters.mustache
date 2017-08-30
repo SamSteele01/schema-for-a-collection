@@ -1,22 +1,32 @@
 <h2>Add Characters</h2>
 
-<ul>
-{{#characters}}
-  <li>
-    {{name}} {{npc}} {{enemy}}
-  </li>
-{{/characters}}
-</ul>
+{{#videogame}}
 
-<form class="" action="/{{_id}}/updateCharacters/" method="post">
-  <p>
-    <!-- <img src="" alt=""> -->
-    <label for="name">name</label>
-    <input type="text" id="name" name="name" value="" >
-    <label for="npc">Not playable character</label>
-    <input type="checkbox" id="npc" name="npc" value="true" >
-    <label for="enemy">enemy</label>
-    <input type="checkbox" id="enemy" name="enemy" value="true" >
-    <button type="submit">Save Image</button>
-  </p>
-</form>
+  <ul>
+  {{#characters}}
+    <li>
+      {{chName}}
+      {{#npc}}Non playable{{/npc}}
+      {{^npc}}Playable{{/npc}}
+      {{#enemy}}Enemy{{/enemy}}
+      <button type="button" name="button">Delete Character</button>
+    </li>
+  {{/characters}}
+  </ul>
+
+  <form class="" action="/{{_id}}/updateCharacters/" method="post">
+    <p>
+      <!-- <img src="" alt=""> -->
+      <label for="chName">Name</label>
+      <input type="text" id="chName" name="chName" value="" >
+      <label for="npc">Not playable character</label>
+      <input type="checkbox" id="npc" name="npc" value="true" >
+      <label for="enemy">Enemy</label>
+      <input type="checkbox" id="enemy" name="enemy" value="true" >
+      <button type="submit">Save Character</button>
+    </p>
+  </form>
+
+{{/videogame}}
+
+<h4><a href="/{{_id}}" class="button button-success">Done adding</a></h4>

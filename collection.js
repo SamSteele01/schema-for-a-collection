@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const collectionSchema = new mongoose.Schema({
   image: {type: String, unique: false},
-  name: {type: String, required: true, unique: true},
+  gameName: {type: String, required: true, unique: true},
   release_date: Number,
   genre: String,
   publisher: String,
@@ -15,7 +15,7 @@ const collectionSchema = new mongoose.Schema({
     max: Number,
     multiPlayer: Boolean
   },
-  characters: [{name: String, npc: Boolean, enemy: Boolean}],
+  characters: [{chName: String, npc: Boolean, enemy: Boolean}],
 })
 
 const Videogame = mongoose.model('Videogame', collectionSchema);
