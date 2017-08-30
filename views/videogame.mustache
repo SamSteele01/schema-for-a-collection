@@ -24,7 +24,7 @@
           <h3>{{multiPlayer}}</h3>
         {{/players}}
 
-        <a href="/addCharacters" class="button button-danger" >Add Characters</a>
+        <a href="/{{_id}}/addCharacters" class="button button-danger" >Add Characters</a>
 
         <ol>
           {{#characters}}
@@ -38,5 +38,5 @@
      {{/videogame}}
 
      <p>
-       <a href="/{{_id}}/modify/">Edit this Videogame</a>
+       <a href="/{{_id}}/modify/" class="button button-info">Edit this Videogame</a>
      </p>

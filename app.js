@@ -30,52 +30,69 @@ app.get('/', function (req, res) {
     res.render('index', {Videogame: Videogame});
   })
 })
-
 app.get('/new', function(req, res){
   res.render('new');
- })
-
- app.post('/new', function(req, res){
-   Videogame.create(req.body).then(function(){
-     res.redirect('/');
-   })
 })
+app.post('/new', function(req, res){
+ Videogame.create(req.body).then(function(){
+   res.redirect('/');
+ })
+})
+
 
 app.get('/:id/', function(req, res){
    Videogame.findOne({_id: req.params.id}).then(function(videogame){
      res.render('videogame', {videogame: videogame})
    })
- })
-
- app.get('/:id/modify/', function(req, res){
-    Videogame.findOne({_id: req.params.id}).then(function(videogame){
-      res.render('modify', {videogame: videogame})
-    })
-  })
-
-  app.post('/:id/update/', function(req, res){
-    // need update method
-    Videogame.findOne({_id: req.params.id}).then(function(videogame){
-      res.render('videogame', {videogame: videogame})
-    })
- })
-
- app.post('/:id/image/', function(req, res){
-   // need update method
-  //  need image handler, file or mongo?
-   Videogame.findOne({_id: req.params.id}).then(function(videogame){
-     res.render('videogame', {videogame: videogame})
-   })
 })
 
-  app.post('/:id/delete', function(req, res){
-     Videogame.findOne({_id: req.params.id}).then(function(videogame){
-       res.render('', {videogame: videogame})
-     })
-   })
 
- app.listen(port, function() {
-   console.log('Example listening on port 3000')
+app.get('/{{_id}}/addCharacters', function(req, res){
+  Videogame.findOne({_id: req.params.id}).then(function(videogame){
+    res.render('addCharacters', {videogame: videogame})
+  })
+})
+app.post('/:id/updateCharacters/', function(req, res){
+  Videogame.findOne({_id: req.params.id}).then(function(videogame){
+  Videogame.characters.push(req.body);
+   Videogame.save().then(function () {
+     res.render('videogame', {videogame: videogame})
+    })
+  })
+})
+
+
+app.get('/:id/modify/', function(req, res){
+  Videogame.findOne({_id: req.params.id}).then(function(videogame){
+    res.render('modify', {videogame: videogame})
+  })
+})
+app.post('/:id/update/', function(req, res){
+  // need update method
+  Videogame.findOne({_id: req.params.id}).then(function(videogame){
+    Videogame.push(req.body);
+     Videogame.save().then(function () {
+       res.render('videogame', {videogame: videogame})
+    })
+  })
+})
+app.post('/:id/image/', function(req, res){
+  // need update method
+  //  need image handler, file or mongo?
+  Videogame.findOne({_id: req.params.id}).then(function(videogame){
+    res.render('videogame', {videogame: videogame})
+  })
+})
+
+
+app.post('/:id/delete', function(req, res){
+   Videogame.findOne({_id: req.params.id}).then(function(videogame){
+     res.render('', {videogame: videogame})
+   })
  })
+
+app.listen(port, function() {
+ console.log('Example listening on port 3000')
+})
 
 module.exports = app;
