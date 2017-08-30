@@ -1,30 +1,24 @@
-<!DOCTYPE html>
- <html>
-   <head>
-     <meta charset="utf-8">
-     <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta20/shoelace.css">
-   </head>
-   <body>
+
      <h1>Videogames Collection</h1>
      <p>Go ahead and add your favorites!</p>
      <hr>
 
      <p>Current list</p>
-     {{#Videogame}}
-      <div class="games">
-        <h2><a href="/{{_id}}">{{name}}</a></h2>
-        {{#platforms}}
-          <h3>{{.}}</h3>
-        {{/platforms}}
-        <h3>{{min}} - {{max}} players</h3>
+     <div class="row">
+       <!-- <div class="col">1</div> -->
+
+         {{#Videogame}}
+          <div class="games">
+            <h2><a href="/{{_id}}">{{name}}</a></h2>
+            {{#platforms}}
+              <h3>{{.}}</h3>
+            {{/platforms}}
+            <h3>{{min}} - {{max}} players</h3>
+          </div>
+         {{/Videogame}}
+
+         <p>
+           <a href="/new/">Add a new videogame</a>
+         </p>
+
       </div>
-     {{/Videogame}}
-
-     <p>
-       <a href="/new/">Add a new videogame</a>
-     </p>
-
-     <script type="text/javascript" src=""></script>
-     <script src="https://cdn.shoelace.style/1.0.0-beta20/shoelace.js"></script>
-   </body>
- </html>

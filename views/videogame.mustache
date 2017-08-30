@@ -1,0 +1,42 @@
+
+     {{#videogame}}
+      <div class="games">
+
+        <h2>{{name}}</h2>
+        <h3>{{release_date}}</h3>
+        <h3>{{genre}}</h3>
+        <h3>{{publisher}}</h3>
+        <h4>{{IGNrating}}</h4>
+        <h4>{{ESRBrating}}</h4>
+
+        <ul>
+          {{#platforms}}
+          <li>
+            <h3>{{.}}</h3>
+          </li>
+          {{/platforms}}
+        </ul>
+
+        <h3>${{price}}</h3>
+
+        {{#players}}
+          <h3>{{min}} - {{max}} players</h3>
+          <h3>{{multiPlayer}}</h3>
+        {{/players}}
+
+        <a href="/addCharacters" class="button button-danger" >Add Characters</a>
+
+        <ol>
+          {{#characters}}
+            <li>
+              <h3>{{name}}{{npc}}{{enemy}}</h3>
+            </li>
+          {{/characters}}
+        </ol>
+
+      </div>
+     {{/videogame}}
+
+     <p>
+       <a href="/{{_id}}/modify/">Edit this Videogame</a>
+     </p>

@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 const collectionSchema = new mongoose.Schema({
+  image: {type: String, unique: false},
   name: {type: String, required: true, unique: true},
   release_date: Number,
   genre: String,
+  publisher: String,
   IGNrating: Number,
   ESRBrating: String,
-  publisher: String,
   platforms: [String],
   price: Number,
   players: {

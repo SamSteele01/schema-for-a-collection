@@ -1,61 +1,86 @@
 
-     <h2>Add a New Game</h2>
+<h2>Update Game Info</h2>
 
+  {{#videogame}}
      {{#errorMsg}}
      <div class="alert alert-danger">
        {{.}}
      </div>
      {{/errorMsg}}
 
-     <form class="" action="/new/" method="post">
+     <form class="" action="/{{_id}}/image/" method="post">
+       <p>
+         <label for="image">Image</label>
+         <img src="{{image}}" alt="">
+         <input type="image" id="image" name="image" value="" >
+         <button type="submit" name="image">Save Image</button>
+       </p>
+    </form>
 
+    <form class="" action="/{{_id}}/update/" method="post">
        <p>
          <label for="name">Name</label>
-         {{}}
+         <h3>{{name}}</h3>
          <input type="text" id="name" name="name" value="" required>
        </p>
        <p>
          <label for="release_date">Release date</label>
+          <h3>{{release_date}}</h3>
          <input type="text" id="release_date" name="release_date" value="" >
        </p>
        <p>
          <label for="genre">Genre</label>
+         <h3>{{genre}}</h3>
          <input type="text" id="genre" name="genre" value="" >
        </p>
        <p>
+         <label for="publisher">Publisher</label>
+         <h3>{{publisher}}</h3>
+         <input type="text" id="publisher" name="publisher" value="" >
+       </p>
+       <p>
          <label for="IGNrating">IGNrating</label>
+         <h3>{{IGNrating}}</h3>
          <input type="text" id="IGNrating" name="IGNrating" value="" >
        </p>
        <p>
          <label for="ESRBrating">ESRBrating</label>
+         <h3>{{ESRBrating}}</h3>
          <input type="text" id="ESRBrating" name="ESRBrating" value="" >
        </p>
        <p>
-         <label for="publisher">Publisher</label>
-         <input type="text" id="publisher" name="publisher" value="" >
-       </p>
-       <p>
          <label for="platforms">Platforms</label>
+         <h3>{{platforms}}</h3>
          <input type="text" id="platforms" name="platforms" value="" >
        </p>
        <p>
          <label for="price">Price</label>
+         <h3>{{price}}</h3>
          <input type="number" id="price" name="price" value="" >
        </p>
        <p>
          <label for="minPlayers">Minium Players</label>
+         <h3>{{min}}</h3>
          <input type="number" id="minPlayers" name="minPlayers" value="" >
        </p>
        <p>
          <label for="maxPlayers">Maxium Players</label>
+         <h3>{{max}}</h3>
          <input type="number" id="maxPlayers" name="maxPlayers" value="" >
        </p>
        <p>
          <label for="multiPlayer">Multi Player?</label>
+         <h3>{{multiPlayer}}</h3>
          <input type="checkbox" id="multiPlayer" name="multiPlayer" value="true" >
        </p>
 
        <p>
-         <button type="submit">Add game</button>
+         <label for="characters">Characters</label>
+         <h3>{{characters}}</h3>
+         <input type="text" id="characters" name="characters" value="" >
+       </p>
+       <p>
+         <button type="submit">Update Game Info</button>
        </p>
      </form>
+  {{/videogame}}
